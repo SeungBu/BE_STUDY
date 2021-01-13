@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- context에게 (공장에게) 알려줄 파일느낌으로 사용 -->
+<!-- root엘리먼트(가장바깥쪽 태그) -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 컨테이너한테 대신 생성하게하고싶은거니까 스프링컨테이너한테 정보를 줘야됨 -->
+<!-- 그래 bean엘리먼트임 -->
+	<bean id="userBean" class="kr.or.connect.diexam01.UserBean"></bean>
+<!-- kr.or.connect.diexam01.UserBean userBean = new kr.or.connect.diexam01.UserBean()이랑 같음 -->
+	<bean id="e" class="kr.or.connect.diexam01.Engine"></bean>
+	<bean id="car" class="kr.or.connect.diexam01.Car">
+		<property name="engine" ref="e"></property>
+	
+	</bean>
+</beans>
+
+
+	<!-- 현재까지는 car에 엔진을 set하라는 의미는 없음. property엘리먼트 사용, 프로머티는 get set 메소드임-->
+	<!-- ref는 "e"생성된 빈을 사용하겠다임, 프로퍼티는 set get메소드중 하나이니까 setEngine혹은 getEngine일텐데 Bean에서는 모두 값을 설정하는 거니까 Set일거임 -->
+	<!-- setEngine에서는 파라미터로 Engine e 를 받고있으니까 ref에 id가 e로 선언된 인스턴스를 setEngine메소드의 파라미터로 전달해달라. -->

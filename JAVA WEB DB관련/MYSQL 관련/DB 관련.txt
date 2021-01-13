@@ -1,0 +1,7 @@
+SQL (Structured Query Language)
+	DML(Data Definition Language) 데이터를 조작하기위해 사용
+		INSERT UPDATE DELETE SELECT 등
+	DDL(Data Definition Language) 데이터베이스의 스키마를 정의하거나 조작하기 위해 사용
+		CREATE DROP ALTER
+	DCL(Data Control Language) 데이터를 제어하는 언어(권한 관리, 데이터 보안, 무결성 등 정의)
+		GRANT REVOKE 등

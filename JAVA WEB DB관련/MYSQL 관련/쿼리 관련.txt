@@ -1,0 +1,47 @@
+관리자 계정인 root로 접속
+	mysql -uroot -p;
+DB생성
+	create database db이름;
+
+Database를 생성했다면, 해당 데이터베이스를 사용하는 계정을 생성해야 합니다.
+또한, 해당 계정이 데이터베이스를 이용할 수 있는 권한을 줘야 합니다.
+아래와 같은 명령을 이용해서 사용자 생성과 권한을 줄 수 있습니다.
+db이름 뒤의 * 는 모든 권한을 의미한다.
+@’%’는 어떤 클라이언트에서든 접근 가능하다는 의미이고, @’localhost’는 해당 컴퓨터에서만 접근 가능하다는 의미입니다.
+flush privileges는 DBMS에게 적용을 하라는 의미입니다.
+해당 명령을 반드시 실행해줘야 합니다.
+	CREATE DATABASE connectdb;
+	CREATE USER connectuser@localhost IDENTIFIED BY 'connect123!@#';
+	GRANT ALL PRIVILEGES ON connectdb.* TO 'connectuser'@'localhost';
+	FLUSH PRIVILEGES:
+DB목록
+	show databases;
+Table목록
+	show tables;
+테이블 정보
+	desc 테이블명;
+연결끊기
+	quit , exit
+
+mysql -u root -p 
+ALIAS ( AS )
+	SELECT 할 때 컬럼에 대한 이름 부여임  ex) name as 이름
+컬럼 합성
+	concat(name,'-',id) AS 이름-아이디  이렇게 하면 출력할 때 데이터들이 seungbu-10 이런식으로 나옴
+
+IN 키워드	
+	WHERE 할 때 10또는 30인 id 할때 where id in (10, 30)
+UCASE, UPPER
+	SELECT UPPER('SEoul'), UCASE('seOUL');  --> SEOUL
+LCASE, LOWER
+	SELECT LOWER('SEoul'), LCASE('seOUL');L --> seoul
+SUBSTRING
+	(string, int, int) SELECT SUBSTRING('Happy Day',3,2); --> pp
+TRIM, LTRIM, RTRIM
+	띄어쓰기 없애기 관련
+LPAD, RPAD
+	SELECT LPAD('hi',5,'?'),LPAD('joe',7,'*'); --> ???hi        ****joe    해당 문자를 기준으로 몇글자인지. 공간남으면 *, ?  등 표기해준것으로 채우기
+타입 변환
+	CAST or CONVERT  CAST(expression AS type) or CONVERT(expression, type)
+그룹 합수
+	AVG SUM 또는 그룹 함수 + groupby절
